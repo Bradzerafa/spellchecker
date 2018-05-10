@@ -1,0 +1,11 @@
+.form {
+  display: flex;
+}
+
+.word {
+  margin-right: 5px;
+}
+
+.middle {
+  margin-top: 20%;
+}
