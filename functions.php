@@ -17,12 +17,36 @@ $word = $_POST['wordCheck'];
 
 // Check if word exists in the DB.
 
-$wordCheck = $db -> prepare("SELECT word FROM english WHERE word = '$word' ");
+$wordCheck = $db -> prepare("SELECT word FROM english");
 $wordCheck -> execute();
-$result = $wordCheck->fetchAll(PDO::FETCH_ASSOC);
+$result = $wordCheck->fetchAll(PDO::FETCH_COLUMN);
+
+foreach ($result as $words){
+   similar_text($word, $words, $percent);
+      if ($percent >= 80.00){
+        echo $words . '</br>';
+    }
+
+
+
+ }
+
+
+
+/*
 
 if (!isset($result[0]['word'])){
-  echo 'Sorry, that word does not exist in the database';
+
+  foreach ($result as $words){
+     similar_text($word, $words, $percent);
+     if ($percent >= 95.00){
+       $didYouMean = $words;
+     }
+
+     echo $didYouMean;
+   }
+
+
 } else {
   $result = ucfirst($result[0]['word']);
 
@@ -31,6 +55,8 @@ if (!isset($result[0]['word'])){
   }
 
 }
+
+*/
 
 
 
