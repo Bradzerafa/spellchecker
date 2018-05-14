@@ -13,7 +13,7 @@ require_once('dbconnect.php');
 
 // Take word from input.
 if (isset($_POST['check'])){
-$word = $_POST['wordCheck'];
+$word = ucfirst($_POST['wordCheck']);
 
 // Check if word exists in the DB.
 
@@ -21,14 +21,43 @@ $wordCheck = $db -> prepare("SELECT word FROM english");
 $wordCheck -> execute();
 $result = $wordCheck->fetchAll(PDO::FETCH_COLUMN);
 
+
+$match = 0;
+
+
+
 foreach ($result as $words){
-   similar_text($word, $words, $percent);
-      if ($percent >= 80.00){
-        echo $words . '</br>';
+  $words = ucfirst($words);
+  if ($word === $words){
+    echo "This word is spelt correctly";
+    $match = 1;
+  }
+}
+
+if ($match === 0){
+  $similarWords = array();
+foreach ($result as $words){
+   similar_text(ucfirst($word), ucfirst($words), $percent);
+      if ($percent >= 85.00){
+      array_push($similarWords, $words);
+        $match = 1;
     }
+  }
+}
+
+if (!empty($similarWords)){
+    echo "Did you mean: </br>";
+    $num = 0;
+    while ($num < count($similarWords)){
+      echo $similarWords[$num] . '</br>';
+      $num++;
+    }
+  }
 
 
 
+ if($match == 0){
+   echo "Sorry, this word is not in the database.";
  }
 
 

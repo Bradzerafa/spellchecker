@@ -15,14 +15,14 @@ require_once('functions.php');
   </head>
   <body class="middle">
 <div class="container">
-    <div class="row ">
+    <div class="row">
       <div class="col">
       </div>
 
       <div class="col">
         <form action="index.php" method="POST" class="form">
           <input id="inputEmail" class="form-control word" placeholder="Add words to check" required="" autofocus="" type="text" name="wordCheck">
-          <button class="btn btn-md btn-primary" type="submit" name="check" >Check</button>
+          <button class="btn btn-md btn-primary" type="submit" name="check">Check</button>
         </form>
       </div>
 
