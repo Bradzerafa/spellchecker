@@ -1,7 +1,4 @@
-<?php
-require_once('functions.php');
- ?>
-
+<?php require_once('functions.php'); ?>
 
 <!doctype html>
 <html lang="en">
@@ -13,16 +10,18 @@ require_once('functions.php');
 
     <title>Check your spelling</title>
   </head>
-  <body class="middle">
-<div class="container">
+  <body>
+    <h1 class="heading">Basic spell checker</h1>
+<div class="container middle">
+
     <div class="row">
       <div class="col">
       </div>
 
       <div class="col">
         <form action="index.php" method="POST" class="form">
-          <input id="inputEmail" class="form-control word" placeholder="Add words to check" required="" autofocus="" type="text" name="wordCheck">
-          <button class="btn btn-md btn-primary" type="submit" name="check">Check</button>
+          <input id="inputEmail" class="form-control word" placeholder="Add words to check" required autofocus type="text" name="wordCheck">
+          <button class="btn btn-md btn-primary"  name="check">Check</button>
         </form>
       </div>
 
